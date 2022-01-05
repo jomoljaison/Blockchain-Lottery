@@ -1,0 +1,32 @@
+{
+  "name": "truffle",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-validator": "^6.2.0",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "popups": "^1.1.3",
+    "web3": "^1.2.1"
+  },
+  "description": "## Add your Git username and set your email",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/ced_b3_projects/ced-b3-g03.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/ced_b3_projects/ced-b3-g03/issues"
+  },
+  "homepage": "https://gitlab.com/ced_b3_projects/ced-b3-g03#readme"
+}

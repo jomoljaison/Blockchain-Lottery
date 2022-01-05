@@ -1,0 +1,217 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <!-- nav and heading part-->
+
+  <section id="heading_admin">
+    <div class="container">
+      <h1 style="text-align: center;color:rgb(40, 184, 40);font-size: 100px;">
+       Blockchain Lottery
+      </h1>
+      <p style="text-align: center">
+        
+      </p>
+    </div>
+  </section>
+  <!--End of nav and heading part-->
+
+  <!--begining of the body -->
+
+  <!--add admin part-->
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+  <script>//valiation item name
+    $.validate({
+      modules: 'html5'
+    });
+  </script>
+  <script>    //validation private key
+    $.validate({
+      validateOnBlur: false, // disable validation when input looses focus
+      errorMessagePosition: 'top', // Instead of 'inline' which is default
+      scrollToTopOnError: false // Set this property to true on longer forms
+    });
+  </script>
+  <!--end of add admin part-->
+
+  <!-------------generate propertyID------------------>
+  <div class="form-modalID">
+    <div class="form-toggle">
+      <button id="id-toggle" onclick="toggleId()">Generate Lottery 
+      Number </button>
+    </div>
+    <div id="generateId">
+      <form id="genIdform">
+        <center>
+          <table>
+            <tr>
+              <td><input text="text" data-validation="required" name="user" id="user" placeholder="Enter the userAddress"
+                  data-validation-regexp="^([a-zA-Z]+)$"></td>
+             
+          </table>
+        </center>
+        <center>
+          <button class="btn col-sm-3" style="background:#33cc99 ;" type="submit" onClick="getValue(event)"> Submit
+          </button>
+        </center>
+        <table>
+          <tr>
+            <td><span id="created"></span></td>
+        </table>
+      </form>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+    <script>//valiation item name
+      $.validate({
+        modules: 'html5'
+      });
+    </script>
+    <script>    //validation private key
+      $.validate({
+        validateOnBlur: false, // disable validation when input looses focus
+        errorMessagePosition: 'bottom', // Instead of 'inline' which is default
+        scrollToTopOnError: false // Set this property to true on longer forms
+      });
+    </script>
+
+    <!--End of property id generation-->
+
+
+
+  <!-------------generate propertyID------------------>
+  <div class="form-modalID">
+    <tr>
+    <div class="form-toggle">
+      <div class="form-togglen">
+        <button id="admin-toggle">Buy Lottery</button>
+      </div>
+    </div></tr>
+    <div id="generateId">
+      <form  action="Buy" method="post" >
+        <center>
+          <table><tr></tr>
+            <tr>
+              <td><input text="text" data-validation="required" name="_unid" id="_unid" placeholder="Lottery Number"
+                data-validation-regexp="^([a-zA-Z]+)$"></td>
+            
+                <td><input text="text" data-validation="required" name="user" id="user" placeholder=" userAddress"
+                  data-validation-regexp="^([a-zA-Z]+)$"></td>
+                
+                  <td><input text="text" data-validation="required" name="pether" id="pether" placeholder="1 ether"
+                    data-validation-regexp="^([a-zA-Z]+)$"></td>
+                      
+                  </tr>
+          </table>
+        </center>
+        <center>
+          <button class="btn col-sm-3" style="background:#33cc99 ;" type="submit" > Submit
+          </button>
+        </center>
+        <table>
+          <tr>
+            <td><span id="created"></span></td>
+        </table>
+      </form>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+    <script>//valiation item name
+      $.validate({
+        modules: 'html5'
+      });
+    </script>
+    <script>    //validation private key
+      $.validate({
+        validateOnBlur: false, // disable validation when input looses focus
+        errorMessagePosition: 'bottom', // Instead of 'inline' which is default
+        scrollToTopOnError: false // Set this property to true on longer forms
+      });
+    </script>
+
+    <!--End of property id generation-->
+
+
+
+
+    <!--------------Add Land Details------->
+
+
+  </div>
+
+  <!--End of the add Land-->
+
+  <!--------View Land Details-------->
+  <form action="pickWinner" method="post">
+  <button class="btn col-sm-3" style="background:#33cc99 ;" type="submit" > pickWinner
+  </button>
+</form>
+</body>
+<!-- function to add admin -->
+
+
+<!-----function to view created id in same page-->
+
+<script>
+  function getValue(event) {
+    event.preventDefault();
+    let user = document.getElementById('user').value;
+   
+    if (user.length == '') {
+      alert("Please provide the details correctly!!")
+    }
+   
+    else {
+      $.post('/AddressId', { user}, (data) => {
+        console.log(data.txn)
+        document.getElementById('created').innerHTML = data.txn;
+      });
+    }
+  }
+</script>
+
+<!-- function to validate the regitration form -->
+
+<script>
+  function setLand(event) {
+    event.preventDefault();
+    let user = document.getElementById('user').value;
+
+    ;
+    console.log("user", user);
+    console.log("district", district);
+    if (user.length == '') {
+      alert("Please provide the details correctly!!");
+    }
+    else {
+      $.post('/setLand', { user }, (data) => {
+        console.log(data.txn);
+
+        alert("land Registered!!")
+        document.getElementById('addlandform').reset();
+      })
+    }
+  }
+</script>
+
+<script>
+
+
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<!-- <script src="../routes/setAdmin.js"></script> -->
+</html>
